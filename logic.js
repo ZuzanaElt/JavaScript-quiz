@@ -1,53 +1,61 @@
-// setting up variables
+let timerEl = document.querySelector(".timer");
+let startButton = document.querySelector(".start");
+let startScreen = document.querySelector("#start-screen");
+let questionTitleDiv = document.querySelector("#question-title");
+let choicesDiv = document.querySelector(".choices");
+let questionsDiv = document.querySelector("#questions")
 
+function emptyScreen (){
+    let emptyScreen = startScreen.textContent = "";
+};
 
-console.log(listOrd1)
-
-//timerRemaining ="10"; //need to raise to 60
-
-//function to run countdown
 function countdown(){
-    timerRemaining ="10"// here or line6
-     let timeCountdownFun = setInterval(function(){
-        timerRemaining--;
-        timerEl.textContent = timerRemaining;
+    timerRemaining ="10"// need to update the timing
+        let timeCountdownFun = setInterval(function(){
+            timerRemaining--;
+            timerEl.textContent = timerRemaining;
 
-        if(timerRemaining === 0) {
-            clearInterval(timeCountdownFun);
-            timerEl.textContent="out of time"; //what happens here
-        }
-       },1000) ;
-}
-//run function
-countdown();
+            if(timerRemaining === 0) {
+                clearInterval(timeCountdownFun);
+                timerEl.textContent="out of time"; //what happens here
+            }
+       },1000
+       ) ;
+};
+countdown(); //can be input into startQuiz function
 
-function enterQuestionnaire() {
+
+
+function startQuiz () {
     startButton.addEventListener("click", function(event){
-        startScreen.classList.add("hide") //hiding after event
-    
-        //adding first question
-        qTag.textContent = "Commonly used data types DO NOT include:";
-        questionsDiv.textContent = "";
+       startScreen.className="hide";
+       questionsDiv.setAttribute("class","")
+        
+    });  
+};
+startQuiz();
 
-        questionsDiv.appendChild(qTag);
-        qTag.appendChild(listOrd1);
-        questionsDiv.appendChild(longLine);
-        
-        longLine.classList.add("line"); //longLine.classList.add("line","hide"
-        li1Q1.classList.add("button","hover");
+
+
+
+/*create 
+a loop function that will
+
+- if userIndex = correctIndex then display "correct" else display "wrong" and calculate timerRemaining-5
+*/
+
+//populating question 1
+for( let i=0; i<4; i++) {
+    questionTitleDiv.textContent = (questions[0].title);
     
-        
-});  
+    let qTag = document.createElement("button");
+    choicesDiv.appendChild(qTag);
+    qTag.setAttribute("class", "button ");
+    qTag.textContent = (questions[0].ques[i]);
+    questionTitleDiv.style.fontSize="30px";
 }
-enterQuestionnaire();
 
-
-li1Q1.addEventListener("click", function(event){
-    questionChoices.textContent= 1;
-    console.log( questionChoices);
-    
-})
-
-
-
-
+/*
+//turns into arrays
+let guestionsArray = Object.values(questions);
+guestionsArray.forEach((i) => console.log(i));*/
