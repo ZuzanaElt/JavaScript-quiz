@@ -6,6 +6,8 @@ const questions = [
             "this is second answer 1 question",
             "this is 3rd answer 1 question",
             "this is 4th answer 1 question",
+            "this is 5555/1n",
+
     ],
     correctIndex:2,
     },
