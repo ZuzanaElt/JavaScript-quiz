@@ -2,10 +2,10 @@ const questions = [
     {   
     title: "Question 1 - choose your answer",
     ques: [
-            "this is first answer first question",
-            "this is second answer 1 question",
-            "this is 3rd answer 1 question",
-            "this is 4th answer 1 question",
+            "this is first answer  to first question",
+            "this is 2nd answer 1st question",
+            "this is 3rd answer 1st question",
+            "this is 4th answer 1st question",
             "this is 5555/1n",
 
     ],
@@ -16,10 +16,10 @@ const questions = [
     {//questions[1]
     title: "This is question number 2", //questions[1].title
     ques: [ //questions[1].ques
-        "this is first answer 2 question", //questions[1].ques[0]
-        "this is second answer 2 question",
-        "this is 3rd answer 2 question",
-        "this is 4th answer 2 question"
+        "this is first answer - 2nd question", //questions[1].ques[0]
+        "this is 2nd answer - 2nd question",
+        "this is 3rd answer - 2nd question",
+        "this is 4th answer 2nd question"
     ],
     correctIndex:1,
     },
@@ -28,10 +28,10 @@ const questions = [
   {
     title: "This is question number 3",
     ques: [
-        "this is first answer 3 question",
-        "this is second answer 3 question",
-        "this is 3rd answer 3 question",
-        "this is 4th answer 3 question",
+        "this is first answer 3rd question",
+        "this is second answer 3rd question",
+        "this is 3rd answer 3rd question",
+        "this is 4th answer 3rd question",
     ],
     correctIndex:2
    },
