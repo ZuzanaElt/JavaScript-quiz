@@ -15,3 +15,10 @@ What a tricky assignement!
 3. the look of the page needs to be amended in JS which can be tricky
     - .setAttribute method
       e.g. -   pTag.setAttribute("style","font-weight: normal; font-size:15px;" );
+
+
+solution for finding index of added button was found on:
+https://stackoverflow.com/questions/67427370/is-there-a-way-to-identify-the-index-of-one-button-among-a-list-of-many-buttons
+answered by Invizi (thank you Invizi!!)
+
+!{image of code](assets/index%20of%20buttons.png)
