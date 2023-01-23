@@ -38,7 +38,7 @@ const questions = [
 
 ]
 ;
-console.log( typeof questions[1].ques[0])
+
 
 
 
