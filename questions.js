@@ -1,15 +1,13 @@
 const questions = [
     {   
-    title: "Question 1 - choose your answer",
+    title: "Commonly used data types do not include",
     ques: [
-            "this is first answer  to first question",
-            "this is 2nd answer 1st question",
-            "this is 3rd answer 1st question",
-            "this is 4th answer 1st question",
-            "this is 5555/1n",
-
+            "String",
+            "Booleans",
+            "Alert",
+            "Numbers",
     ],
-    correctIndex:2,
+    correctIndex:3,
     },
 
  

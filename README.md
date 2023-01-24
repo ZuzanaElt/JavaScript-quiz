@@ -15,7 +15,7 @@ url for the page is https://zuzanaelt.github.io/JavaScript-quiz/
 - setting up variables that are related to classes in both htmls as well as the future questions. All of these are placed into questions.js
 - logic.js will hopefully stay available for functions and the process
 
-    1. setting up timer interval -this needs to be linked to ending game
+    1. setting up timer interval -this is linked to end of game using local storage
     2. setting up button event that hides the first page and then displayes the first question
     3. the look of the page needs to be amended in JS which can be tricky
     - .setAttribute method

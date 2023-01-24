@@ -1,5 +1,5 @@
 let resultLine = document.querySelector (".highscores-result");
-resultLine.textContent = ((localStorage.getItem("initials"))+ " - "+" Your score is " )
+resultLine.textContent = ((localStorage.getItem("initials"))+ " - " + " Your score is " + (localStorage.getItem("score")))
 
 let clearBtn = document.getElementById("clear");
 //clearBtn= clearBtn.style.backgroundColor="black";

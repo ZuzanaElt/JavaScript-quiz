@@ -13,6 +13,7 @@ let iniInput = document.getElementById("initials");
 let timerRemaining;
 let timerCount;
 var score;
+let finalScore = document.getElementById("final-score")
 
 longLine.textContent = "__________________________________________________";
 rightAnsw.textContent = "Correct!";
@@ -31,7 +32,7 @@ function emptyquestionScreen(){
 };
 
 function countdown(){
-    timerRemaining ="10"// need to update the timing
+    timerRemaining ="20"// need to update the timing
         let timeCountdownVar = setInterval(function(){
             timerRemaining--;
             timerEl.textContent = timerRemaining;
@@ -50,15 +51,15 @@ function countdown(){
 
 function startQuiz () {
     startButton.addEventListener("click", function(event){
-       startScreen.className = "hide";
-       questionsDiv.setAttribute("class","");
-       rightAnsw.classList.add("hide");
-       wrongAnsw.classList.add("hide");
-       countdown();
+        startScreen.className = "hide";
+        questionsDiv.setAttribute("class","");
+        rightAnsw.classList.add("hide");
+        wrongAnsw.classList.add("hide");
+        countdown();
     });  
 };
 
-/*/////////looping through  - this is disabled
+/*/////////looping through all questions - this is disabled
 for (let j = 0; j < questions.length; j++){
    
         function populateQuestionDiv(event){
@@ -101,7 +102,8 @@ for (let j = 0; j < questions.length; j++){
 
  populateQuestionDiv();       
 */
- startQuiz();
+ 
+startQuiz();
  
 /////single question populating
    
@@ -109,7 +111,7 @@ function populateQuestionDiv(question){
         for( let i=0; i<questions[0].ques.length; i++) {
             
             questionTitleDiv.textContent = (questions[0].title);
-            questionTitleDiv.style.fontSize="30px";
+            questionTitleDiv.style.fontSize = "30px";
             let buttonQ = document.createElement("button");
             buttonQ.textContent = (questions[0].ques[i]);
             
@@ -121,31 +123,29 @@ function populateQuestionDiv(question){
         function userChoice (){allButtons.forEach(buttonQQ => {
                 buttonQQ.addEventListener("click", (e) => {
                      //index of clicked button goes into indexB
-                    let indexB = Array.from(allButtons).indexOf(e.target);
-                   
-                    if (indexB!==questions[0].correctIndex ){ //if correct answer = turn green
-                        buttonQQ.style.backgroundColor="red";
-                        console.log("wrong choice");
-                        rightAnsw.classList.add("hide");
-                        wrongAnsw.classList.remove("hide"); 
-                        
-                    } else {
-                        buttonQQ.style.backgroundColor="green";
-                        console.log("matching");
-                        wrongAnsw.classList.add("hide");
-                        rightAnsw.classList.remove("hide");
-                        console.log(timerRemaining)
-                        score=timerRemaining;
-
-                        clearInterval(countdown())
-                        
-                        unhideScreen();
-                        emptyquestionScreen();
-                        console.log("Score is " +  score);
-                        timerEl.classList.add("hide");
-                        return score
-                        //score stops
-                    };
+                        let indexB = Array.from(allButtons).indexOf(e.target);
+                    
+                        if (indexB!==questions[0].correctIndex ){ 
+                            //if wrong answer answer = turn red
+                            buttonQQ.style.backgroundColor = "red";                            
+                            rightAnsw.classList.add("hide");
+                            wrongAnsw.classList.remove("hide"); 
+                            timerRemaining=timerRemaining-5; //penalty for wrong answer
+                            
+                        } else {
+                            //if correct answer...
+                            buttonQQ.style.backgroundColor = "green";                        
+                            wrongAnsw.classList.add("hide");
+                            rightAnsw.classList.remove("hide");                        
+                            score = timerRemaining;
+                            clearInterval(countdown());                        
+                            unhideScreen();
+                            emptyquestionScreen();                        
+                            localStorage.setItem("score",(score))
+                            timerEl.classList.add("hide");
+                            finalScore.textContent = score;
+                            
+                        };
                     
                 }); 
         })};
@@ -156,13 +156,15 @@ function populateQuestionDiv(question){
 populateQuestionDiv(); 
 
 let unhideScreen = function(){
-endScreen.classList.remove("hide");}
+        endScreen.classList.remove("hide");
+};
+
+finalScore.textContent = score;
 
 submitBut.addEventListener("click", function(e) {
     
-    iniInput = iniInput.value;
-    localStorage.setItem("initials",(iniInput));
-    console.log (iniInput.value);
+     iniInput = iniInput.value;
+      localStorage.setItem("initials",(iniInput));
 });
 
 
