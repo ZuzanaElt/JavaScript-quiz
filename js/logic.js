@@ -120,21 +120,21 @@ function populateQuestionDiv(question){
             
         let allButtons = document.querySelectorAll("button");
 
-        function userChoice (){allButtons.forEach(buttonQQ => {
-                buttonQQ.addEventListener("click", (e) => {
+        function userChoice (){allButtons.forEach(buttonQ => {
+                buttonQ.addEventListener("click", (e) => {
                      //index of clicked button goes into indexB
                         let indexB = Array.from(allButtons).indexOf(e.target);
                     
                         if (indexB!==questions[0].correctIndex ){ 
                             //if wrong answer answer = turn red
-                            buttonQQ.style.backgroundColor = "red";                            
+                            buttonQ.style.backgroundColor = "red";                            
                             rightAnsw.classList.add("hide");
                             wrongAnsw.classList.remove("hide"); 
                             timerRemaining=timerRemaining-5; //penalty for wrong answer
                             
                         } else {
                             //if correct answer...
-                            buttonQQ.style.backgroundColor = "green";                        
+                            buttonQ.style.backgroundColor = "green";                        
                             wrongAnsw.classList.add("hide");
                             rightAnsw.classList.remove("hide");                        
                             score = timerRemaining;
