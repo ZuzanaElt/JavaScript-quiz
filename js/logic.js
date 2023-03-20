@@ -14,6 +14,7 @@ let timerRemaining;
 let timerCount;
 var score;
 let finalScore = document.getElementById("final-score")
+let allButtons = document.querySelectorAll("button");
 
 longLine.textContent = "__________________________________________________";
 rightAnsw.textContent = "Correct!";
@@ -32,7 +33,7 @@ function emptyquestionScreen(){
 };
 
 function countdown(){
-    timerRemaining ="20"// need to update the timing
+    timerRemaining ="40"// need to update the timing
         let timeCountdownVar = setInterval(function(){
             timerRemaining--;
             timerEl.textContent = timerRemaining;
@@ -59,119 +60,138 @@ function startQuiz () {
     });  
 };
 
-/*/////////looping through all questions - this is disabled
-for (let j = 0; j < questions.length; j++){
-   
-        function populateQuestionDiv(event){
-            for( let i=0; i<questions[j].ques.length; i++) {
-                
-                questionTitleDiv.textContent = (questions[j].title);
-                questionTitleDiv.style.fontSize="30px";
-                let buttonQ = document.createElement("button");
-                buttonQ.textContent = (questions[j].ques[i]);
-                choicesDiv.appendChild(buttonQ);  
-                };
-               
-            let allButtons = document.querySelectorAll("button");
-
-            function userChoice (){allButtons.forEach(buttonQQ => {
-                    buttonQQ.addEventListener("click", (e) => { //index of clicked button into indexB
-                        let indexB = Array.from(allButtons).indexOf(e.target);
-                        
-                            
-                        if (indexB===questions[j].correctIndex ){ //if correct answer = turn green
-                            buttonQQ.style.backgroundColor="green";
-                                console.log("matching");
-                                wrongAnsw.classList.add("hide");
-                                rightAnsw.classList.remove("hide");
-                                return 
-                                
-                        } else {
-                            buttonQQ.style.backgroundColor="red";
-                            console.log("wrong choice");
-                            rightAnsw.classList.add("hide");
-                            wrongAnsw.classList.remove("hide");
-                            return ;
-                        };
-                    });
-            })};
-            userChoice();
-            ;
+function populateDIV (number){
+    for( let i=0; i<questions[number].ques.length; i++) {
+            
+        questionTitleDiv.textContent = (questions[number].title);
+        questionTitleDiv.style.fontSize = "30px";
+        let buttonQ = document.createElement("button");
+        buttonQ.textContent = (questions[number].ques[i]);
+        choicesDiv.appendChild(buttonQ);  
         };
-};
-
- populateQuestionDiv();       
-*/
- 
-startQuiz();
- 
-/////single question populating
-   
-function populateQuestionDiv(question){
-        for( let i=0; i<questions[0].ques.length; i++) {
-            
-            questionTitleDiv.textContent = (questions[0].title);
-            questionTitleDiv.style.fontSize = "30px";
-            let buttonQ = document.createElement("button");
-            buttonQ.textContent = (questions[0].ques[i]);
-            
-            choicesDiv.appendChild(buttonQ);  
-            };
-            
-        let allButtons = document.querySelectorAll("button");
-
-        function userChoice (){allButtons.forEach(buttonQ => {
-                buttonQ.addEventListener("click", (e) => {
-                     //index of clicked button goes into indexB
-                        let indexB = Array.from(allButtons).indexOf(e.target);
-                    
-                        if (indexB!==questions[0].correctIndex ){ 
-                            //if wrong answer answer = turn red
-                            buttonQ.style.backgroundColor = "red";                            
-                            rightAnsw.classList.add("hide");
-                            wrongAnsw.classList.remove("hide"); 
-                            timerRemaining=timerRemaining-5; //penalty for wrong answer
-                            
-                        } else {
-                            //if correct answer...
-                            buttonQ.style.backgroundColor = "green";                        
-                            wrongAnsw.classList.add("hide");
-                            rightAnsw.classList.remove("hide");                        
-                            score = timerRemaining;
-                            clearInterval(countdown());                        
-                            unhideScreen();
-                            emptyquestionScreen();                        
-                            localStorage.setItem("score",(score))
-                            timerEl.classList.add("hide");
-                            finalScore.textContent = score;
-                            
-                        };
-                    
-                }); 
-        })};
-        userChoice();
-};
-
-
-populateQuestionDiv(); 
-
-let unhideScreen = function(){
+        allButtons = document.querySelectorAll("button");
+}
+function correctAnswer(buttonQ){
+    buttonQ.style.backgroundColor = "green";                        
+    wrongAnsw.classList.add("hide");
+    rightAnsw.classList.remove("hide");                        
+    score = timerRemaining;
+    emptyquestionScreen();                        
+    localStorage.setItem("score",(score))
+    finalScore.textContent = score;
+}
+function wrongAnswer(buttonQ){
+    buttonQ.style.backgroundColor = "red";                            
+    rightAnsw.classList.add("hide");
+    wrongAnsw.classList.remove("hide"); 
+    timerRemaining=timerRemaining-5; //penalty for wrong answer
+}
+function unhideScreen (){
         endScreen.classList.remove("hide");
 };
+ 
+let  populateQuestion5 = (number) => {
+    populateDIV(4);
+    let userChoice =  () => {
+        allButtons.forEach(buttonQ => {
+            buttonQ.addEventListener("click", (event) => {
+                let indexB = Array.from(allButtons).indexOf(event.target);
+
+                if (indexB!==questions[number].correctIndex ){ 
+                    wrongAnswer(buttonQ);
+                } else {
+                    correctAnswer(buttonQ);
+                    clearInterval(countdown());                        
+                    unhideScreen(); //unhide the score screen
+                    timerEl.classList.add("hide");
+                };
+            }); 
+    })};
+userChoice(); 
+}
+
+let  populateQuestion4 = (number) => {
+    populateDIV(3);    
+    let userChoice = () =>{
+        allButtons.forEach(buttonQ => {
+            buttonQ.addEventListener("click", (event) => {
+                    let indexB = Array.from(allButtons).indexOf(event.target);
+                    if (indexB!==questions[number].correctIndex ){ 
+                        wrongAnswer(buttonQ);  
+                    } else {
+                        correctAnswer(buttonQ);
+                        populateQuestion5(4)
+                        };
+                            
+                    }); 
+            })};
+            userChoice(); 
+}
+let  populateQuestion3 = (number) => {
+        populateDIV(2);
+        let userChoice = () => {
+            allButtons.forEach(buttonQ => {
+                buttonQ.addEventListener("click", (event) => {
+                    let indexB = Array.from(allButtons).indexOf(event.target);
+                    if (indexB!==questions[number].correctIndex ){ 
+                        wrongAnswer(buttonQ);
+                    } else {
+                        correctAnswer(buttonQ);
+                        
+                        populateQuestion4(3)
+                        };
+                    }); 
+                })};
+                userChoice();
+}
+let populateQuestion2 = (number) => {
+    populateDIV(1);   
+    let userChoice = function (){
+        allButtons.forEach(buttonQ => {
+            buttonQ.addEventListener("click", (event) => {
+                
+                let indexB = Array.from(allButtons).indexOf(event.target);
+                if (indexB!==questions[number].correctIndex ){ 
+                    wrongAnswer(buttonQ);
+                } else {
+                    correctAnswer(buttonQ);
+                    
+                    populateQuestion3(2);
+                };
+                }); 
+            })};
+        userChoice();
+}
+function populateQuestion1(number){
+    populateDIV(0);
+    let userChoice = function (){allButtons.forEach(buttonQ => {
+        buttonQ.addEventListener("click", (event) => {
+            //index of clicked button goes into indexB
+            let indexB = Array.from(allButtons).indexOf(event.target);
+            if (indexB!==questions[number].correctIndex ){ 
+                //if wrong answer answer = turn red
+                wrongAnswer(buttonQ);
+            } else {
+                //if correct answer...
+                correctAnswer(buttonQ);                   
+                populateQuestion2(1);
+                };
+                        
+        }); 
+        })};
+        userChoice();
+}; 
+
+startQuiz();
+populateQuestion1(0); 
+
 
 finalScore.textContent = score;
 
 submitBut.addEventListener("click", function(e) {
-    
      iniInput = iniInput.value;
       localStorage.setItem("initials",(iniInput));
 });
 
 
- /* ////To note////
- let choicesArray = Object.values(choices);
- choicesArray.forEach((i) => console.log(i));
- console.log( choices)
-/*
-//turns into arrays
-*/
+ 

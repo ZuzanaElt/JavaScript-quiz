@@ -12,24 +12,43 @@ const questions = [
 
  
     {//questions[1]
-    title: "This is question number 2", //questions[1].title
+    title: "Which of these is Jquerry expression", //questions[1].title
     ques: [ //questions[1].ques
-        "this is first answer - 2nd question", //questions[1].ques[0]
-        "this is 2nd answer - 2nd question",
-        "this is 3rd answer - 2nd question",
-        "this is 4th answer 2nd question"
+        "test = document.querySelectorAll('div')", //questions[1].ques[0]
+        "test.textContent = 'Hello'",
+        "document.body.appendChild(h2)",
+        "testElement.text('Here we are')",
     ],
-    correctIndex:1,
+    correctIndex:4,
     },
 
 
   {
-    title: "This is question number 3",
+    title: "Which array method sorts the elements of an array?",
     ques: [
-        "this is first answer 3rd question",
-        "this is second answer 3rd question",
-        "this is 3rd answer 3rd question",
-        "this is 4th answer 3rd question",
+        "sort()",
+        "changeOrder(order)",
+        "order()",
+        "None of the above methods",
+    ],
+    correctIndex:1
+   },
+   {
+    title: "Which variable cannot change value",
+    ques: [
+        "var",
+        "const",
+        "let",
+    ],
+    correctIndex:2
+   },
+   {
+    title: "Which built-in method combines the text of two strings and returns a new string?",
+    ques: [
+        "append() ",
+        "concat() ",
+        "attach() ",
+        "one of the above",
     ],
     correctIndex:2
    },
