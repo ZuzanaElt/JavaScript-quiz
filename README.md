@@ -27,11 +27,11 @@ url for the page is https://zuzanaelt.github.io/JavaScript-quiz/
 https://stackoverflow.com/questions/67427370/is-there-a-way-to-identify-the-index-of-one-button-among-a-list-of-many-buttons
 answered by Invizi (thank you Invizi!!)
 
-![image of code](./assets/images/index-buttons.png)
+![image of code](assets/images/index-buttons.png)
 
-    5.populating questions div with questions  proved challenging and was achieved through repetition whih is not the ideal. 
-    6. creating button evenListeners was not too difficult to figure out
-    7. I was also struggling with the counter stopping but I managed to find the correct area to place clearInterval() function.
+     5.populating questions div with questions  proved challenging and was achieved through repetition whih is not the ideal. 
+     6. creating button evenListeners was not too difficult to figure out
+     7. I was also struggling with the counter stopping but I managed to find the correct area to place clearInterval() function.
 
   All in all, this project was challenging. I am happy with what I managed to achieve but a  questions stayed unanswered.
 
