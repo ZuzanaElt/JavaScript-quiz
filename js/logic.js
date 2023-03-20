@@ -90,7 +90,7 @@ function unhideScreen (){
         endScreen.classList.remove("hide");
 };
  
-let  populateQuestion5 = (number) => {
+let populateQuestion5 = (number) => {
     populateDIV(4);
     let userChoice =  () => {
         allButtons.forEach(buttonQ => {
@@ -110,7 +110,7 @@ let  populateQuestion5 = (number) => {
 userChoice(); 
 }
 
-let  populateQuestion4 = (number) => {
+let populateQuestion4 = (number) => {
     populateDIV(3);    
     let userChoice = () =>{
         allButtons.forEach(buttonQ => {
@@ -127,7 +127,7 @@ let  populateQuestion4 = (number) => {
             })};
             userChoice(); 
 }
-let  populateQuestion3 = (number) => {
+let populateQuestion3 = (number) => {
         populateDIV(2);
         let userChoice = () => {
             allButtons.forEach(buttonQ => {
@@ -162,7 +162,7 @@ let populateQuestion2 = (number) => {
             })};
         userChoice();
 }
-function populateQuestion1(number){
+let startPopoulatingQuestions =(number) => {
     populateDIV(0);
     let userChoice = function (){allButtons.forEach(buttonQ => {
         buttonQ.addEventListener("click", (event) => {
@@ -183,13 +183,12 @@ function populateQuestion1(number){
 }; 
 
 startQuiz();
-populateQuestion1(0); 
-
+startPopoulatingQuestions(0); 
 
 finalScore.textContent = score;
 
 submitBut.addEventListener("click", function(e) {
-     iniInput = iniInput.value;
+      iniInput = iniInput.value;
       localStorage.setItem("initials",(iniInput));
 });
 
